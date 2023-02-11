@@ -17,7 +17,7 @@ for i in range(n):
         nume = int(notinf + inf) - int(notinf) # 6142857 - 6
 
     else: # 순환소수가 아닐 때
-        snum = snum.replace('0.','')
+        snum = snum.replace('0.','') # 0을 앞에 붙이기 위함
         deno = 10 ** len(snum)
         nume = int(snum)
 
