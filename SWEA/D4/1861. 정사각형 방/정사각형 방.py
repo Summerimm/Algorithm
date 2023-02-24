@@ -18,8 +18,7 @@ for tc in range(1, T+1):
     arr = [list(map(int, input().split())) for _ in range(N)]
     visited = [[0] * N for _ in range(N)]
     
-    cnt = 0
-    num = 1000000
+    cnt, num = 0, N*N
     for i in range(N):
         for j in range(N):
             tnum, tcnt = bfs(i, j)
