@@ -1,26 +1,24 @@
-di = [-1, 1, 0, 0]
-dj = [0, 0, -1, 1]
-
 def bfs(si, sj):
-    visited[si][sj] = 1
     q = [(si, sj)]
+    visited = [[0] * N for _ in range(N)]
+    visited[si][sj] = 1
+
     while q:
-        t = q.pop(0)
-        for k in range(4):
-            ci, cj = t[0] + di[k], t[1] + dj[k]
-            if 0<=ci<N and 0<=cj<N and arr[ci][cj] == '0' and visited[ci][cj] == 0:
-                q.append((ci, cj))
-                visited[ci][cj] = 1
-            if 0<=ci<N and 0<=cj<N and arr[ci][cj] == '3':
-                visited[ci][cj] = 1
-                break
+        ti, tj = q.pop(0)
+        for di, dj in (-1, 0), (1, 0), (0, -1), (0, 1):
+            ni, nj = ti + di, tj + dj
+            if 0<=ni<N and 0<=nj<N and visited[ni][nj] == 0 and arr[ni][nj] != '1':
+                if arr[ni][nj] == '3':
+                    return 1
+                visited[ni][nj] = 1
+                q.append((ni, nj))
+    return 0
 
 T = 10
-N = 100
 for tc in range(1, T+1):
-    tc = int(input())
+    _ = int(input())
+    N = 100
     arr = [input() for _ in range(N)]
-    visited = [[0] * N for _ in range(N)]
 
     for i in range(N):
         for j in range(N):
@@ -28,5 +26,5 @@ for tc in range(1, T+1):
                 si, sj = i, j
             if arr[i][j] == '3':
                 ei, ej = i, j
-    bfs(si, sj)
-    print(f'#{tc} {visited[ei][ej]}')
+    ans = bfs(si, sj)
+    print(f'#{tc} {ans}')
