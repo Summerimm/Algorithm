@@ -6,13 +6,13 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int a = sc.nextInt();
-        String b = sc.next();
+        int b = sc.nextInt();
 
         sc.close();
 
-        System.out.println(a * (b.charAt(2) - '0'));
-        System.out.println(a * (b.charAt(1) - '0'));
-        System.out.println(a * (b.charAt(0) - '0'));
-        System.out.println(a * Integer.parseInt(b));
+        System.out.println(a * (b % 10));
+        System.out.println(a * ((b / 10) % 10));
+        System.out.println(a * (b / 100));
+        System.out.println(a * b);
     }
 }
