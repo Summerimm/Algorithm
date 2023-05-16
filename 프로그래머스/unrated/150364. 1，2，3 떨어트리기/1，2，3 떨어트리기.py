@@ -58,7 +58,7 @@ def solution(edges, target):
         # 만족하는 지 검증
         isFin = True
         for i in leaf_cnt:
-            if leaf_cnt[i] < int(math.ceil(target[i-1]/3)):
+            if target[i-1] > leaf_cnt[i] * 3:
                 isFin = False
                 break
             elif leaf_cnt[i] > target[i-1]:
