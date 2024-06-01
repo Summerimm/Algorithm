@@ -50,15 +50,12 @@ int main()
 
     cin >> N >> q;
     for (int i = 0; i < N; i++)
-    {
         cin >> arr[i];
-    }
     T.init(arr);
 
     int left, right;
     for (int i = 0; i < q; i++)
     {
-
         cin >> left >> right;
         cout << T.query(1, left, right, 1, T.base + 1) << endl;
     }
